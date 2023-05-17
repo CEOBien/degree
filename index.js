@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const Degree = require("./degree");
 var path = require('path');
 var degreeRouter = require("./routers/degree");
-
+var pinataRouter = require("./routers/pinata");
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.DB_URL);
 console.log("Connected to Mongo Successfully!");
@@ -19,5 +19,6 @@ app.get('/', function(req, res){
     res.render("index");
   });
 app.use("/api/v1", degreeRouter);
+app.use("/api/v1",pinataRouter);
 
 app.listen(3000, () => console.log("Server Started"));
